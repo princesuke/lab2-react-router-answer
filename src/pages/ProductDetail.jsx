@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import useTheme from "../contexts/useTheme";
 
 
 export default function ProductDetail() {
@@ -8,6 +9,8 @@ export default function ProductDetail() {
     const [product, setProduct] = useState({});
     const navigate = useNavigate();
     const [notFound, setNotFound] = useState(false);
+
+    const { theme} = useTheme();
 
     useEffect(() => {
         axios.get(`https://dummyjson.com/products/${id}`)
@@ -33,6 +36,7 @@ export default function ProductDetail() {
 
     return (
         <div>
+            <p>{theme}</p>
             <h2>{product.tile}</h2>
             <p>{product.description}</p>
             <p>Price: {product.price}</p>
