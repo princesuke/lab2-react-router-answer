@@ -1,8 +1,33 @@
+import { useState } from "react";
+import { useNavigate } from "react-router";
+
 function Subscribe() {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(!email.trim()) {
+      alert("กรุณากรอกอีเมลก่อน");
+      return;
+    }
+
+    navigate("/success/" + email);
+  }
+
   return (
     <div>
       <h1>Subscribe Page</h1>
-      <p>(Lab: สร้างฟอร์มสมัครรับข่าวสาร และเปลี่ยนหน้าเมื่อส่งสำเร็จ)</p>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)} />&nbsp;  
+          <button type="submit">สมัครเลย</button>
+      </form>
+      
     </div>
   );
 }
