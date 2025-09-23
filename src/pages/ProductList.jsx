@@ -1,16 +1,7 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router";
 
 export default function ProductList() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    axios.get("https://dummyjson.com/products").then((response) => {
-      console.log(response.data.products);
-      setProducts(response.data.products);
-    });
-  }, []);
+  const products = useLoaderData();
 
   return (
     <ul>

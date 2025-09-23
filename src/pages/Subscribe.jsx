@@ -1,4 +1,4 @@
-import { Form, useActionData, useNavigation } from "react-router-dom";
+import { Form, useActionData, useNavigation } from "react-router";
 
 function Subscribe() {
   const actionData = useActionData();
