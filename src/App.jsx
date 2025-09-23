@@ -1,12 +1,13 @@
-import Navbar from './components/Navbar';
-import AppRouter from './router/AppRouter';
+// import Navbar from './components/Navbar';
+import { BrowserRouter } from "react-router";
+import AppRoutes from "./router/AppRoutes";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       {/* <Navbar /> */}
-      <AppRouter />
-    </>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
 

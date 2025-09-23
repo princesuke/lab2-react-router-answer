@@ -1,10 +1,70 @@
+:root {
+  --color-bg: #ffffff;
+  --color-fg: #111111;
+  --color-nav-bg: #f2f2f2;
+  --color-link: #0b5fff;
+  --color-link-active: #063fbd;
+  --color-border: #e5e5e5;
+}
+
+.theme-dark {
+  --color-bg: #0f1115;
+  --color-fg: #e6e6e6;
+  --color-nav-bg: #1a1d24;
+  --color-link: #8ab4f8;
+  --color-link-active: #a0c2ff;
+  --color-border: #2a2f3a;
+}
+
+/* Light theme explicitly sets defaults (swap support) */
+.theme-light {
+  --color-bg: #ffffff;
+  --color-fg: #111111;
+  --color-nav-bg: #f2f2f2;
+  --color-link: #0b5fff;
+  --color-link-active: #063fbd;
+  --color-border: #e5e5e5;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
 }
-nav a {
-  margin-right: 1rem;
-  text-decoration: none;
-  color: black;
+
+.app-root {
+  min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-fg);
 }
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--color-nav-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-nav a {
+  margin-right: 0.5rem;
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+.app-nav a.active {
+  color: var(--color-link-active);
+  text-decoration: underline;
+}
+
+.theme-toggle {
+  margin-left: auto;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-fg);
+  cursor: pointer;
+}
+
