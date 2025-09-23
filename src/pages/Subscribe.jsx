@@ -1,33 +1,28 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Form, useActionData, useNavigation } from "react-router-dom";
 
 function Subscribe() {
-  const [email, setEmail] = useState("");
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if(!email.trim()) {
-      alert("กรุณากรอกอีเมลก่อน");
-      return;
-    }
-
-    navigate("/success/" + email);
-  }
+  const actionData = useActionData();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   return (
     <div>
       <h1>Subscribe Page</h1>
-      <form onSubmit={handleSubmit}>
+      {actionData?.error && (
+        <p style={{ color: "crimson" }}>{actionData.error}</p>
+      )}
+      <Form method="post" replace>
         <input
+          name="email"
           type="email"
           placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)} />&nbsp;  
-          <button type="submit">สมัครเลย</button>
-      </form>
-      
+          required
+        />
+        &nbsp;
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "กำลังส่ง..." : "สมัครเลย"}
+        </button>
+      </Form>
     </div>
   );
 }

@@ -1,14 +1,8 @@
-// import Navbar from './components/Navbar';
-import { BrowserRouter } from "react-router";
-import AppRoutes from "./router/AppRoutes";
+import { RouterProvider } from "react-router";
+import router from "./router";
 
 function App() {
-  return (
-    <BrowserRouter>
-      {/* <Navbar /> */}
-      <AppRoutes />
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
